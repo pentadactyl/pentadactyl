@@ -36,8 +36,6 @@ var StatusLine = Module("statusline", {
                 ]
             });
 
-        config.tabbrowser.getStatusPanel().hidden = true;
-
         if (this.statusBar.localName == "toolbar") {
             styles.system.add("addon-bar", config.styleableChrome, String.raw`
                 #status-bar, #dactyl-status-bar { margin-top: 0 !important; }

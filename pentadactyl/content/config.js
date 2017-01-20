@@ -64,8 +64,7 @@ var Config = Module("config", ConfigBase, {
             },
 
             get toolbars() {
-                let navbar = window.document.getElementById("nav-bar");
-                return window.getTogglableToolbars().concat(navbar);
+                return Array.from(DOM.XPath("//*[@toolbarname]", window.document));
             },
 
             removeTab: function removeTab(tab) {

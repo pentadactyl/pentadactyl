@@ -5,7 +5,7 @@
         em:id="pentadactyl@addons.palemoon.org"
         em:type="2"
         em:name="Pentadactyl"
-        em:version="1.2pre-pm-1"
+        em:version="1.2pre-pm-2"
         em:description="Pale Moon for Vim and Links addicts"
         em:homepageURL="http://5digits.org/pentadactyl"
         em:bootstrap="true"

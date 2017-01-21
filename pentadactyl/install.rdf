@@ -2,20 +2,20 @@
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:em="http://www.mozilla.org/2004/em-rdf#">
     <Description about="urn:mozilla:install-manifest"
-        em:id="pentadactyl@dactyl.googlecode.com"
+        em:id="pentadactyl@addons.palemoon.org"
         em:type="2"
         em:name="Pentadactyl"
-        em:version="1.2pre"
-        em:description="Firefox for Vim and Links addicts"
+        em:version="1.2pre-pm-1"
+        em:description="Pale Moon for Vim and Links addicts"
         em:homepageURL="http://5digits.org/pentadactyl"
         em:bootstrap="true"
-        em:multiprocessCompatible="false"
         em:strictCompatibility="true">
 
         <em:creator>Kris Maglione, Doug Kearns</em:creator>
         <em:developer>Kris Maglione</em:developer>
         <em:developer>Doug Kearns</em:developer>
 
+        <em:contributor>Andriy Kmit' (Андрій Кміть)</em:contributor>
         <em:contributor>anekos</em:contributor>
         <em:contributor>teramako</em:contributor>
         <em:contributor>Viktor Kojouharov (Виктор Кожухаров)</em:contributor>
@@ -32,7 +32,7 @@
         <em:targetApplication>
             <Description
                 em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
-                em:minVersion="38.0"
+                em:minVersion="27.0"
                 em:maxVersion="50.*"/>
         </em:targetApplication>
     </Description>

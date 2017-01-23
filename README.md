@@ -6,7 +6,9 @@ This is a port of one of the best XUL-based Firefox extensions, targeting [Pale 
 Install
 -------
 
-You can find the latest XPI file for download [here](https://github.com/madand/pentadactyl-pm/releases/latest). For older versions see the [Releases](https://github.com/madand/pentadactyl-pm/releases) page.
+The recommended way to install is via the download button at the Pale Moon Addons website [page](https://addons.palemoon.org/extensions/pentadactyl/). Installed this way, the extension could be updated automatically by the browser.
+
+Alternatively, you can always find XPI files and source code of all releases at the [Releases](https://github.com/madand/pentadactyl-pm/releases) page.
 
 Development
 -----------

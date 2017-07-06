@@ -10,6 +10,11 @@ The recommended way to install is via the download button at the Pale Moon Addon
 
 Alternatively, you can always find XPI files and source code of all releases at the [Releases](https://github.com/madand/pentadactyl-pm/releases) page.
 
+Reporting issues
+----------------
+
+This repo is intended only to fix Pale Moon specific compatibility issues. If you have a general feature request or found a non-PaleMoon-specific bug, please report them [upstream](https://github.com/5digits/dactyl).
+
 Development
 -----------
 

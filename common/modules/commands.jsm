@@ -476,7 +476,7 @@ var Ex = Module("Ex", {
 
     commands: null,
 
-    init() {
+    init: function () {
         let proxy = new Proxy(this, {
             get(target, prop, receiver) {
                 if (prop === "isProxy")
@@ -494,7 +494,7 @@ var Ex = Module("Ex", {
         return proxy;
     },
 
-    _args(cmd, args) {
+    _args: function(cmd, args) {
         args = Array.slice(args);
 
         let res = cmd.newArgs({ context: this.context });
@@ -522,7 +522,7 @@ var Ex = Module("Ex", {
         return res;
     },
 
-    _complete(cmd) {
+    _complete: function (cmd) {
         return (context, func, obj, args) => {
             args = this._args(cmd, args);
             args.completeArg = args.length - 1;
@@ -531,7 +531,7 @@ var Ex = Module("Ex", {
         };
     },
 
-    _run(name) {
+    _run: function (name) {
         const self = this;
         let cmd = this.commands.get(name);
         util.assert(cmd, _("command.noSuch"));

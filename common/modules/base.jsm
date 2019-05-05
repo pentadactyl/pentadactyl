@@ -1815,7 +1815,7 @@ update(iter, {
 });
 
 var Iter = Class("Iter", {
-    init(iter) {
+    init: function (iter) {
         this.iter = iter;
         if (!(Symbol.iterator in iter) && "__iterator__" in iter)
             this.iter = iter.__iterator__();
@@ -1826,9 +1826,9 @@ var Iter = Class("Iter", {
             };
     },
 
-    next() { return this.iter.next() },
+    next: function () { return this.iter.next() },
 
-    send() { return apply(this.iter, "send", arguments) },
+    send: function () { return apply(this.iter, "send", arguments) },
 
     "@@iterator": function () { return this.iter },
 

@@ -1932,7 +1932,7 @@ var Dactyl = Module("dactyl", XPCOM(Ci.nsISupportsWeakReference, ModuleBase), {
         dactyl.log(_("dactyl.modulesLoaded"), 3);
 
         userContext.DOM = Class("DOM", DOM, {
-            init(sel, ctxt) {
+            init: function init(sel, ctxt) {
                 return DOM(sel, ctxt || buffer.focusedFrame.document);
             }
         });

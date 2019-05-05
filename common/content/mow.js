@@ -7,7 +7,7 @@
 "use strict";
 
 var MOW = Module("mow", {
-    init() {
+    init: function init() {
         let proxy = new Proxy(this, {
             get(target, prop, receiver) {
                 if (prop in target)

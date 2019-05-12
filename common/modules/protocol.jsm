@@ -56,10 +56,15 @@ function NetError(orig, error) {
 function RedirectChannel(to, orig, time, message) {
     let html = DOM.toXML(
         ["html", {},
-            ["head", {},
-                ["meta", { "http-equiv": "Refresh", content: (time || 0) + ";" + to }]],
-            ["body", {},
-                ["h2", { style: "text-align: center" }, message || ""]]]);
+         ["head", {},
+          ["script", {},
+           "setTimeout(function () { window.location = '"
+           + to
+           + "'; }, "
+           + ((time || 0) * 1000)
+           + ");"]],
+         ["body", {},
+          ["h2", { style: "text-align: center" }, message || ""]]]);
     return StringChannel(html, "text/html", services.io.newURI(to, null, null));
 }
 

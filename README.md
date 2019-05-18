@@ -1,19 +1,16 @@
 Pentadactyl for Pale Moon
 =========================
 
-This is a port of one of the best XUL-based Firefox extensions, targeting [Pale Moon](https://www.palemoon.org/) 27. The goal of this project is to make Pentadactyl compatible with Pale Moon, while staying as close to the upstream as possible.
+This is a community-maintained fork of one of the best XUL-based
+Firefox extensions, targeting [Pale Moon](https://www.palemoon.org/)
+28.5+.
 
 Install
 -------
 
-The recommended way to install is via the download button at the Pale Moon Addons website [page](https://addons.palemoon.org/extensions/pentadactyl/). Installed this way, the extension could be updated automatically by the browser.
-
-Alternatively, you can always find XPI files and source code of all releases at the [Releases](https://github.com/madand/pentadactyl-pm/releases) page.
-
-Reporting issues
-----------------
-
-This repo is intended only to fix Pale Moon specific compatibility issues. If you have a general feature request or found a non-PaleMoon-specific bug, please report them [upstream](https://github.com/5digits/dactyl).
+The release on the Pale Moon addons website is not currently up to
+date, so the recommended way to install at the moment is to follow the
+development instructions below.
 
 Development
 -----------
@@ -21,8 +18,8 @@ Development
 ### Build XPI from sources ###
 
 ``` shell
-git clone --depth 1000 https://github.com/madand/pentadactyl-pm.git
-cd pentadactyl-pm/
+git clone --depth 1000 https://github.com/pentadactyl/pentadactyl.git
+cd pentadactyl/
 make -C pentadactyl xpi
 ```
 
@@ -43,7 +40,7 @@ As creating and installing a new XPI file after each update is cumbersome, most 
 Assuming you use the `default` profile, the following command will create the proxy file:
 
 ``` shell
-cd /path/to/cloned/pentadactyl-pm/
+cd /path/to/cloned/pentadactyl/
 # On clean profile, ensure that 'extensions' directory exists inside of the profile directory.
 echo "$(pwd)/pentadactyl" >~/'.moonchild productions/pale moon'/*.default/extensions/pentadactyl@addons.palemoon.org
 ```

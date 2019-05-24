@@ -2,12 +2,12 @@
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:em="http://www.mozilla.org/2004/em-rdf#">
     <Description about="urn:mozilla:install-manifest"
-        em:id="pentadactyl@addons.palemoon.org"
+        em:id="{ff87f0b6-b523-4308-8de6-8569cfb794ca}"
         em:type="2"
         em:name="Pentadactyl"
-        em:version="1.2pre-pm-3"
-        em:description="Pale Moon for Vim and Links addicts"
-        em:homepageURL="http://5digits.org/pentadactyl"
+        em:version="1.3.0"
+        em:description="The ultimate Vi-style browsing extension"
+        em:homepageURL="https://github.com/pentadactyl/pentadactyl"
         em:bootstrap="true"
         em:multiprocessCompatible="false"
         em:strictCompatibility="true">

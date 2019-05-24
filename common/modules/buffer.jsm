@@ -1737,10 +1737,8 @@ var Buffer = Module("Buffer", {
         let timers = new WeakMap;
 
         return function smoothScrollTo(node, x, y) {
-            let { options } = overlay.activeModules;
-
-            let time = options["scrolltime"];
-            let steps = options["scrollsteps"];
+            let time = overlay.activeModules["scrolltime"];
+            let steps = overlay.activeModules["scrollsteps"];
 
             let elem = Buffer.Scrollable(node);
 

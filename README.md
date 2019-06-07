@@ -5,15 +5,14 @@ This is a community-maintained fork of one of the best XUL-based
 Firefox extensions, targeting [Pale Moon](https://www.palemoon.org/)
 28.5+.
 
-Install
--------
+Binary Releases
+---------------
 
-The release on the Pale Moon addons website is not currently up to
-date, so the recommended way to install at the moment is to follow the
-development instructions below.
+* [GitHub Releases Page](https://github.com/pentadactyl/pentadactyl/releases)
+* [Pale Moon Website](https://addons.palemoon.org/addon/pentadactyl-community/)
 
-Development
------------
+Building from Source
+--------------------
 
 ### Build XPI from sources ###
 

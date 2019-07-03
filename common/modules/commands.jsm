@@ -627,7 +627,7 @@ var CommandHive = Class("CommandHive", Contexts.Hive, {
         extra.hive = this;
         extra.parsedSpecs = Command.parseSpecs(specs);
 
-        let names = extra.parsedSpecs.flatMap();
+        let names = extra.parsedSpecs;
         let name = names[0];
 
         if (this.name != "builtin") {

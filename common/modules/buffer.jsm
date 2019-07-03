@@ -2418,7 +2418,13 @@ var Buffer = Module("Buffer", {
 
                     let elements = Array.from(frames)
                                         .flatMap(win => DOM.XPath(xpath, win.document))
-                                        .filter(elem => {
+                                        .flatMap(elems => {
+                                            var _tmp=[];
+                                            for(var i=0; i<elems.snapshotLength; i++) {
+                                                _tmp.push(elems.snapshotItem(i));
+                                            }
+                                            return _tmp;
+                                        }).filter(elem => {
 
                         if (isinstance(elem, [Ci.nsIDOMHTMLFrameElement,
                                               Ci.nsIDOMHTMLIFrameElement]))
@@ -2426,7 +2432,7 @@ var Buffer = Module("Buffer", {
 
                         elem = DOM(elem);
 
-                        if (elem[0].readOnly || elem[0].disabled || !DOM(elem).isEditable)
+                        if (!elem || !elem.length || elem[0].readOnly || elem[0].disabled || !DOM(elem).isEditable)
                             return false;
 
                         let style = elem.style;

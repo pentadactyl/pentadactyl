@@ -1682,9 +1682,9 @@ function iter(obj, iface) {
     return Iter(res);
 }
 update(iter, {
-    toArray: deprecated("Array.from", function toArray(iter) {
+    toArray: function toArray(iter) {
         return Array.from(iter);
-    }),
+    },
 
     // See Ary.prototype for API docs.
     toObject: function toObject(iter) {
@@ -1954,10 +1954,10 @@ var Ary = Class("Ary", Array, {
      * @param {Array} ary
      * @returns {Iterator(Object)}
      */
-    iterValues: deprecated("Array#values", function* iterValues(ary) {
+    iterValues: function* iterValues(ary) {
         for (let i = 0; i < ary.length; i++)
             yield ary[i];
-    }),
+    },
 
     /**
      * Returns an Iterator for an array's indices and values.

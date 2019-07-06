@@ -488,19 +488,19 @@ var RangeFind = Class("RangeFind", {
         else {
             this.selections = [];
             let string = this.lastString;
-            for (let r of this.iter(string)) {
-                let controller = this.range.selectionController;
-                for (let node = r.startContainer; node; node = node.parentNode)
-                    if (node instanceof Ci.nsIDOMNSEditableElement) {
-                        controller = node.editor.selectionController;
-                        break;
-                    }
+            //for (let r of this.iter(string)) {
+            //    let controller = this.range.selectionController;
+            //    for (let node = r.startContainer; node; node = node.parentNode)
+            //        if (node instanceof Ci.nsIDOMNSEditableElement) {
+            //            controller = node.editor.selectionController;
+            //            break;
+            //        }
 
-                let sel = controller.getSelection(Ci.nsISelectionController.SELECTION_FIND);
-                sel.addRange(r);
-                if (this.selections.indexOf(sel) < 0)
-                    this.selections.push(sel);
-            }
+            //    let sel = controller.getSelection(Ci.nsISelectionController.SELECTION_FIND);
+            //    sel.addRange(r);
+            //    if (this.selections.indexOf(sel) < 0)
+            //        this.selections.push(sel);
+            //}
             this.highlighted = this.lastString;
             if (this.lastRange)
                 this.selectedRange = this.lastRange;

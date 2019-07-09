@@ -2,8 +2,8 @@
     "name": "pentadactyl",
     "appName": "Pentadactyl",
     "idName": "PENTADACTYL",
-    "host": "Firefox",
-    "hostbin": "firefox",
+    "host": "Pale Moon",
+    "hostbin": "palemoon",
 
     "module-paths": [
         "resource://dactyl/"
@@ -45,9 +45,9 @@
         "PageLoad":         "Triggered when a page gets (re)loaded/opened",
         "Sanitize":         "Triggered when a sanitizeable item is cleared",
         "ShellCmdPost":     "Triggered after executing a shell command with :!cmd",
-        "Enter":            "Triggered after Firefox starts",
-        "LeavePre":         "Triggered before exiting Firefox, just before destroying each module",
-        "Leave":            "Triggered before exiting Firefox"
+        "Enter":            "Triggered after Pale Moon starts",
+        "LeavePre":         "Triggered before exiting Pale Moon, just before destroying each module",
+        "Leave":            "Triggered before exiting Pale Moon"
     },
 
     "option-defaults": {

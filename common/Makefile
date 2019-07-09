@@ -19,7 +19,7 @@ OS            = $(shell uname -s)
 BUILD_DATE    = $(shell date "+%Y/%m/%d %H:%M:%S")
 BASE          = $(TOP)/../common
 VERSION	     ?= $(shell $(SED) -n 's/.*em:version(>|=")(.*)["<].*/\2/p' $(TOP)/install.rdf | sed 1q)
-UUID   	     := $(shell $(SED) -n 's/.*em:id(>|=")(.*)["<].*/\2/p' $(TOP)/install.rdf | sed 1q)
+UUID	     := $(shell $(SED) -n 's/.*em:id(>|=")(.*)["<].*/\2/p' $(TOP)/install.rdf | sed 1q)
 MANGLE	     := chrome
 MOZMILL       = mozmill
 HOSTAPP_PATH  = $(shell which $(HOSTAPP))
@@ -164,28 +164,13 @@ xpi: $(CHROME)
 	       -f $(BASE)/process_config.awk \
 	       "$(TOP)/config.json" >"$(XPI_PATH)/config.json"
 
-	version="$(VERSION)"; 			\
-	hg root >/dev/null 2>&1 && 		\
-	case "$$version" in			\
-	*pre) version="$$version-hg$$(hg log -r . --template '{rev}')-$$(hg branch)";; \
-	esac; 					\
-	$(SED) -e 's/(em:version(>|="))([^"<]+)/\1'"$$version/" \
+	$(SED) -e 's/(em:version(>|="))([^"<]+)/\1$(VERSION)/' \
 		<"$(TOP)/install.rdf" >"$(XPI_PATH)/install.rdf"
 
 	$(MAKE_JAR) "$(XPI)" "$(XPI_BASES)" "$(XPI_DIRS)" "$(XPI_TEXTS)" "$(XPI_BINS)" "$(XPI_FILES)"
 	rm -r -- $(CHROME)
 
-	@if ! which realpath >/dev/null 2>&1; \
-	then realpath() { 		\
-		local IFS="$$(echo)";	\
-		local x="$$1"; 		\
-		case "$$x" in		\
-		/*) ;;			\
-		*) x=$$(pwd);;		\
-		esac;			\
-	};				\
-	fi;				\
-	echo "Built XPI: $$(realpath -s -- $(XPI))"
+	echo "Built XPI: $(shell realpath -s -- $(XPI))"
 
 #### jar
 
@@ -193,4 +178,3 @@ $(CHROME) $(JAR):
 	@echo "Packaging chrome..."
 	$(MAKE_JAR) -r "$(@)" "$(JAR_BASES)" "$(JAR_DIRS)" "$(JAR_TEXTS)" "$(JAR_BINS)" "$(JAR_FILES)"
 	@echo "SUCCESS: $@"
-

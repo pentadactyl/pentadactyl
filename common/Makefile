@@ -21,13 +21,7 @@ BASE          = $(TOP)/../common
 VERSION	     ?= $(shell $(SED) -n 's/.*em:version(>|=")(.*)["<].*/\2/p' $(TOP)/install.rdf | sed 1q)
 UUID	     := $(shell $(SED) -n 's/.*em:id(>|=")(.*)["<].*/\2/p' $(TOP)/install.rdf | sed 1q)
 MANGLE	     := chrome
-MOZMILL       = mozmill
-HOSTAPP_PATH  = $(shell which $(HOSTAPP))
-TEST_DIR      = $(BASE)/tests/functional
-TEST_LOG      = $(TEST_DIR)/log
-
 IDNAME       := $(shell echo "$(NAME)" | tr a-z A-Z)
-
 LOCALEDIR     = locale
 DOC_FILES     = $(wildcard $(LOCALEDIR)/*/*.xml)
 
@@ -60,7 +54,7 @@ BUILD_DIR     = build.$(VERSION).$(OS)
 
 #### rules
 
-TARGETS = all help info jar xpi install clean distclean install installxpi test $(CHROME) $(JAR)
+TARGETS = all help info jar xpi install clean distclean install installxpi $(CHROME) $(JAR)
 $(TARGETS:%=\%.%):
 	echo MAKE $* $(@:$*.%=%)
 	$(MAKE) -C $* $(@:$*.%=%)
@@ -81,7 +75,6 @@ help:
 	@echo '                    to change the directory where profiles are searched'
 	@echo "  make clean      - clean up"
 	@echo "  make distclean  - clean up more"
-	@echo "  make test       - run functional tests"
 	@echo
 	@echo "running some commands with V=1 will show more build details"
 
@@ -144,11 +137,6 @@ clean:
 distclean:
 	@echo "More $(NAME) cleanup..."
 	rm -rf $(BUILD_DIR)
-
-test: xpi
-	@echo "Running $(NAME) functional tests..."
-	$(IDNAME)_INIT="set loadplugins=" \
-		$(MOZMILL) --show-all -l $(TEST_LOG) -b $(HOSTAPP_PATH) --addons $(XPI) -t $(TEST_DIR)
 
 #### xpi
 

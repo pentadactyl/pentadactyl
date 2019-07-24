@@ -954,6 +954,19 @@
 </item>
 
 <item>
+    <tags>'noshowhinttext' 'showhinttext'</tags>
+    <spec>'hinttext'</spec>
+    <type>&option.showhinttext.type;</type>
+    <default>&option.showhinttext.default;</default>
+    <description>
+        <p>
+            Determines if hints should show accompanying description texts
+            in addition to the shortcut.
+        </p>
+    </description>
+</item>
+
+<item>
     <tags>'hto' 'hinttimeout'</tags>
     <spec>'hinttimeout' 'hto'</spec>
     <type>&option.hinttimeout.type;</type>

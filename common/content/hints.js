@@ -370,6 +370,9 @@ var HintSession = Class("HintSession", CommandMode, {
                 hint.span.setAttribute("style", ["display: none; left:", leftPos, "px; top:", topPos, "px"].join(""));
                 container.appendChild(hint.span);
 
+                if (!options["showhinttext"]) {
+                    hint.showText = false;
+                }
                 this.pageHints.push(hint);
             }
 
@@ -1358,6 +1361,10 @@ var Hints = Module("hints", {
 
                 validator: DOM.validateMatcher
             });
+
+        options.add(["showhinttext"],
+            "Enables or disables showing hints' related texts",
+            "boolean", true);
 
         options.add(["hinttags", "ht"],
             "XPath or CSS selector strings of hintable elements for Hints mode",

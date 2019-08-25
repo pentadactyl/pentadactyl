@@ -46,6 +46,8 @@ var Dactyl = Module("dactyl", XPCOM(Ci.nsISupportsWeakReference, ModuleBase), {
         }));
     },
 
+    commandAliases: {},
+
     cleanup: function () {
         for (let cleanup of this.cleanups)
             cleanup.call(this);
@@ -1550,6 +1552,24 @@ var Dactyl = Module("dactyl", XPCOM(Ci.nsISupportsWeakReference, ModuleBase), {
                 completer: function (context) {
                     context.ignoreCase = true;
                     completion.dialog(context);
+                }
+            });
+
+        commands.add(["alias"],
+            "Alias a built-in command to another name",
+            function (args) {
+                const command = args[0];
+                dactyl.assert(config.modules.commands.builtin._list.find(cmd => cmd.name == command), _("error.invalidCommand", command));
+
+                const alias = args[1];
+                dactyl.assert(alias.match(config.modules.commands.validName), _("error.invalidCommand", alias));
+
+                config.modules.commands.addAlias(command, alias);
+            }, {
+                argCount: "2",
+                completer: function (context) {
+                    context.ignoreCase = true;
+                    completion.ex(context);
                 }
             });
 

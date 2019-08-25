@@ -629,15 +629,15 @@ var CommandHive = Class("CommandHive", Contexts.Hive, {
 
         let names = extra.parsedSpecs;
         let name = names[0];
-        
+
         if (this.name != "builtin") {
             util.assert(!names.some(name => name in commands.builtin._map),
                         _("command.cantReplace", name));
-        
+
             util.assert(replace || names.every(name => !(name in this._map)),
                         _("command.wontReplace", name));
         }
-        
+
         for (let name of names) {
             if (false)
                 // For some reason, the `this` object of the getter gets
@@ -650,7 +650,7 @@ var CommandHive = Class("CommandHive", Contexts.Hive, {
                         return this._run(name);
                     },
                 });
-        
+
             if (name in this._map && !this._map[name].isPlaceholder)
                 this.remove(name);
         }

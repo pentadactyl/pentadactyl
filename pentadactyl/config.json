@@ -47,7 +47,11 @@
         "ShellCmdPost":     "Triggered after executing a shell command with :!cmd",
         "Enter":            "Triggered after Pale Moon starts",
         "LeavePre":         "Triggered before exiting Pale Moon, just before destroying each module",
-        "Leave":            "Triggered before exiting Pale Moon"
+        "Leave":            "Triggered before exiting Pale Moon",
+        "TabOpen":          "Triggered when a tab opens",
+        "TabClose":         "Triggered when a tab closes",
+        "TabMove":          "Triggered when a tab moves",
+        "TabSelect":        "Triggered when a tab is selected"
     },
 
     "option-defaults": {

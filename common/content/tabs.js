@@ -115,7 +115,7 @@ var Tabs = Module("tabs", {
         modes.reset();
         statusline.updateTabCount(true);
         this.updateSelectionHistory();
-        config.modules.autocommands.trigger("TabSelect", tabs);
+        config.modules.autocommands.trigger("TabSelect", []);
     },
 
     get allTabs() {
@@ -1150,8 +1150,10 @@ var Tabs = Module("tabs", {
     events: function initEvents() {
         let tabContainer = gBrowser.mTabContainer;
         function callback(event) {
-            tabs.timeout(function () { this.updateTabCount(); });
-            config.modules.autocommands.trigger(event, tabs);
+            tabs.timeout(function () {
+                this.updateTabCount();
+                config.modules.autocommands.trigger(event, []);
+            });
         }
         for (let event of ["TabMove", "TabOpen", "TabClose"])
             events.listen(tabContainer, event, () => callback(event), false);

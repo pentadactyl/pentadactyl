@@ -23,6 +23,10 @@
     <dt>Enter</dt>             <dd>Triggered after &dactyl.host; starts</dd>
     <dt>LeavePre</dt>          <dd>Triggered before exiting &dactyl.host;, just before destroying each module</dd>
     <dt>Leave</dt>             <dd>Triggered before exiting &dactyl.host;</dd>
+    <dt>TabOpen</dt>:          <dd>Triggered when a tab opens</dd>,
+    <dt>TabClose</dt>:         <dd>Triggered when a tab closes</dd>,
+    <dt>TabMove</dt>:          <dd>Triggered when a tab moves</dd>,
+    <dt>TabSelect</dt>:        <dd>Triggered when a tab is selected</dd>
 </dl>
 
 <dl tag="autocommand-args" replace="autocommand-args">

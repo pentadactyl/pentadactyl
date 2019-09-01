@@ -110,8 +110,6 @@ var Tabs = Module("tabs", {
     },
 
     _onTabSelect: function _onTabSelect() {
-        // TODO: is all of that necessary?
-        //       I vote no. --Kris
         modes.reset();
         statusline.updateTabCount(true);
         this.updateSelectionHistory();
@@ -1149,14 +1147,16 @@ var Tabs = Module("tabs", {
     },
     events: function initEvents() {
         let tabContainer = gBrowser.mTabContainer;
-        function callback(event) {
-            tabs.timeout(function () {
-                this.updateTabCount();
-                config.modules.autocommands.trigger(event, []);
-            });
+        function callbackClosure(event) {
+            return function () {
+                tabs.timeout(function () {
+                    this.updateTabCount();
+                    config.modules.autocommands.trigger(event, []);
+                });
+            }
         }
         for (let event of ["TabMove", "TabOpen", "TabClose"])
-            events.listen(tabContainer, event, () => callback(event), false);
+            events.listen(tabContainer, event, callbackClosure(event), false);
         events.listen(tabContainer, "TabSelect", tabs.bound._onTabSelect, false);
     },
     mappings: function initMappings() {

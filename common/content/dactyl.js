@@ -46,8 +46,6 @@ var Dactyl = Module("dactyl", XPCOM(Ci.nsISupportsWeakReference, ModuleBase), {
         }));
     },
 
-    commandAliases: {},
-
     cleanup: function () {
         for (let cleanup of this.cleanups)
             cleanup.call(this);

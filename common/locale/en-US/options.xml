@@ -573,6 +573,37 @@
 </item>
 
 <item>
+    <tags>'dr' 'defregister'</tags>
+    <spec>'defregister' 'dr'</spec>
+    <type>string</type>
+    <default>*+</default>
+    <description>
+        <p>
+            The list of registers (clipboards) to use, in order of
+            preference, for yank (<k>y</k>) and put
+            (<k>p</k>, <k>P</k>, and <k>gP</k>) operations on X11 systems.
+            Yank operations yank to all registers in this list and
+            put operations read from <str>*</str> or <str>+</str>,
+            whichever comes first in this list.
+
+            The value is a string consisting of any of the following
+            characters:
+
+            <dl>
+                <dt>*</dt> <dd>Tied to the PRIMARY selection value.</dd>
+                <dt>+</dt> <dd>Tied to the primary global clipboard.</dd>
+                <dt>_</dt> <dd>The null register. Never has any value.</dd>
+                <dt>"</dt> <dd>Equivalent to 0.</dd>
+                <dt>0-9</dt> <dd>
+                    These act as a kill ring. Setting any one of them pushes
+                    the values of higher numbered registers up one slot.
+                </dd>
+            </dl>
+        </p>
+    </description>
+</item>
+
+<item>
     <tags>'dls' 'dlsort' 'downloadsort'</tags>
     <spec>'downloadsort' 'dlsort' 'dls'</spec>
     <strut/>

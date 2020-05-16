@@ -56,8 +56,6 @@ var Editor = Module("editor", XPCOM(Ci.nsIEditActionListener, ModuleBase), {
         }, this);
     },
 
-    defaultRegister: "*+",
-
     selectionRegisters: {
         "*": "selection",
         "+": "global"
@@ -72,7 +70,7 @@ var Editor = Module("editor", XPCOM(Ci.nsIEditActionListener, ModuleBase), {
      */
     getRegister: function getRegister(name) {
         if (name == null)
-            name = editor.currentRegister || editor.defaultRegister;
+            name = editor.currentRegister || options.get("defregister").value;
 
         name = String(name)[0];
         if (name == '"')
@@ -106,7 +104,7 @@ var Editor = Module("editor", XPCOM(Ci.nsIEditActionListener, ModuleBase), {
      */
     setRegister: function setRegister(name, value, verbose) {
         if (name == null)
-            name = editor.currentRegister || editor.defaultRegister;
+            name = editor.currentRegister || options.get("defregister").value;
 
         if (isinstance(value, [Ci.nsIDOMRange, Ci.nsIDOMNode, Ci.nsISelection]))
             value = DOM.stringify(value);
@@ -1438,6 +1436,11 @@ var Editor = Module("editor", XPCOM(Ci.nsIEditActionListener, ModuleBase), {
                     context.keys = { text: identity, description: identity };
                 }
             });
+
+        options.add(["defregister", "dr"],
+            "The list of registers to use, in order of preference, for yank and put operations",
+            // Make sure to update the docs when you change this.
+            "string", "*+");
     },
     sanitizer: function initSanitizer() {
         sanitizer.addItem("registers", {

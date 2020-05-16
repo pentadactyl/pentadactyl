@@ -333,8 +333,9 @@ var Dactyl = Module("dactyl", XPCOM(Ci.nsISupportsWeakReference, ModuleBase), {
      * apps like Thunderbird which do not provide it.
      *
      * @param {string} which Which clipboard to write to. Either
-     *     "global" or "selection". If not provided, both clipboards are
-     *     updated.
+     *     "global" or "selection". If not provided, the selection is used
+     *     unless '+' appears before '*' in the option 'defregister' or
+     *     the OS does not have a selection clipboard.
      *     @optional
      * @returns {string}
      */
@@ -345,8 +346,12 @@ var Dactyl = Module("dactyl", XPCOM(Ci.nsISupportsWeakReference, ModuleBase), {
             let transferable = services.Transferable();
             transferable.addDataFlavor("text/unicode");
 
-            let source = clipboard[which == "global" || !clipboard.supportsSelectionClipboard() ?
-                                   "kGlobalClipboard" : "kSelectionClipboard"];
+           let source = clipboard[
+                which == "global"
+                || !clipboard.supportsSelectionClipboard()
+                || (!which && options.get("defregister").value.match(/^[^\*]*\+/)) ?
+                    "kGlobalClipboard" : "kSelectionClipboard"
+            ];
             clipboard.getData(transferable, source);
 
             let str = {}, len = {};

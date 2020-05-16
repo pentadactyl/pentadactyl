@@ -170,6 +170,8 @@
             contents, or, on X11 systems, the currently selected
             text. All white space is stripped from the selection and
             it is opened in the same manner as <ex>:open</ex>.
+            The clipboard used on X11 systems is controlled by
+            <o>defregister</o>.
         </p>
     </description>
 </item>

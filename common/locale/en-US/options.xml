@@ -956,8 +956,8 @@
 <item>
     <tags>'noshowhinttext' 'showhinttext'</tags>
     <spec>'hinttext'</spec>
-    <type>&option.showhinttext.type;</type>
-    <default>&option.showhinttext.default;</default>
+    <type>boolean</type>
+    <default>true</default>
     <description>
         <p>
             Determines if hints should show accompanying description texts

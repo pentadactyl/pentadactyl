@@ -1364,6 +1364,7 @@ var Hints = Module("hints", {
 
         options.add(["showhinttext"],
             "Enables or disables showing hints' related texts",
+            // Make sure to update the docs when you change this.
             "boolean", true);
 
         options.add(["hinttags", "ht"],

@@ -938,7 +938,7 @@
     <spec>'hinttags' 'ht'</spec>
     <type>&option.hinttags.type;</type>
     <default>:-moz-any-link,area,button,iframe,input:not([type=hidden]),
-          label[for],select,textarea,
+          label[for],select,textarea,summary,
           [onclick],[onmouseover],[onmousedown],[onmouseup],[oncommand],
           [tabindex],[role=link],[role=button],[contenteditable=true]</default>
     <description>

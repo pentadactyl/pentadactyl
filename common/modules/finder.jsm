@@ -669,9 +669,22 @@ var RangeFind = Class("RangeFind", {
                 }
                 this.range = this.ranges[i];
 
-                let start = RangeFind.sameDocument(this.lastRange, this.range.range) && this.range.intersects(this.lastRange) ?
-                                RangeFind.endpoint(this.lastRange, !(again ^ this.backward)) :
-                                RangeFind.endpoint(this.range.range, !this.backward);
+                let is_same_doc = RangeFind.sameDocument(
+                        this.lastRange, this.range.range);
+                let is_intersected = this.range.intersects(this.lastRange);
+                let start = null;
+                if (is_same_doc && is_intersected) {
+                    start = RangeFind.endpoint(
+                                this.lastRange, !(again ^ this.backward));
+                } else {
+                    if (this.range == null || this.lastRange == null) {
+                        start = RangeFind.endpoint(
+                                this.range.range, !this.backward);
+                    } else {
+                        start = RangeFind.endpoint(
+                                this.lastRange, this.backward);
+                    }
+                }
 
                 if (this.backward && !again)
                     start = RangeFind.endpoint(this.startRange, false);

@@ -405,18 +405,40 @@ var RangeFind = Class("RangeFind", {
     get flags() { return this.matchCase ? "" : "i"; },
 
     get selectedRange() {
-        let win = this.store.focusedFrame && this.store.focusedFrame.get() || this.content;
-
+        let win = this.store.focusedFrame && this.store.focusedFrame.get(
+                    ) || this.content;
         let selection = win.getSelection();
-        return (selection.rangeCount ? selection.getRangeAt(0) : this.ranges[0].range).cloneRange();
+        let range = null;
+        if (selection.rangeCount) {
+            range = selection.getRangeAt(0);
+            this.show_selection_in_editing_node(range, false);
+        } else {
+            range = this.ranges[0].range;
+        }
+        return range.cloneRange();
     },
     set selectedRange(range) {
         this.range.selection.removeAllRanges();
         this.range.selection.addRange(range);
         this.range.selectionController.scrollSelectionIntoView(
             this.range.selectionController.SELECTION_NORMAL, 0, false);
+        this.show_selection_in_editing_node(range, true);
+        this.store.focusedFrame = util.weakReference(
+            range.startContainer.ownerDocument.defaultView);
+    },
 
-        this.store.focusedFrame = util.weakReference(range.startContainer.ownerDocument.defaultView);
+    show_selection_in_editing_node: function(range, is_selected) {
+        for (let node = range.startContainer; node; node = node.parentNode) {
+            if (node instanceof Ci.nsIDOMNSEditableElement) {
+                let sel = node.editor.selectionController.getSelection(
+                    Ci.nsISelectionController.SELECTION_IME_SELECTEDRAWTEXT);
+                sel.removeAllRanges();
+                if (is_selected) {
+                    sel.addRange(range);
+                }
+                break;
+            }
+        }
     },
 
     cancel: function cancel() {

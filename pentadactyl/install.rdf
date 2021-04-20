@@ -2,7 +2,7 @@
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:em="http://www.mozilla.org/2004/em-rdf#">
     <Description about="urn:mozilla:install-manifest"
-        em:id="pentadactyl@addons.palemoon.org"
+        em:id="{ff87f0b6-b523-4308-8de6-8569cfb794ca}"
         em:type="2"
         em:name="Pentadactyl"
         em:version="1.4.0"

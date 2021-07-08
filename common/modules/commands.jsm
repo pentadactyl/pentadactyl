@@ -666,6 +666,13 @@ var CommandHive = Class("CommandHive", Contexts.Hive, {
         return name;
     },
 
+    addAlias: function addAlias(name, alias) {
+        let closure = () => this._list.find(cmd => cmd.hasName(name));
+        memoize(this._map, alias, closure);
+
+        return alias;
+    },
+
     _add: function _add(names, description, action, extra={}, replace=false) {
         const { contexts } = this.modules;
         extra.definedAt = contexts.getCaller(Components.stack.caller.caller);
@@ -925,6 +932,11 @@ var Commands = Module("commands", {
         extra.definedAt = contexts.getCaller(caller);
         return apply(group, "add", arguments);
     },
+
+    addAlias: function addAlias() {
+        return apply(this.builtin, "addAlias", arguments);
+    },
+
     addUserCommand: deprecated("group.commands.add", { get: function addUserCommand() { return this.user.bound._add } }),
     getUserCommands: deprecated("iter(group.commands)", function getUserCommands() { return iter(this.user).toArray(); }),
     removeUserCommand: deprecated("group.commands.remove", { get: function removeUserCommand() { return this.user.bound.remove; } }),

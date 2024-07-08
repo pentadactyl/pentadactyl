@@ -804,6 +804,7 @@ var Hints = Module("hints", {
         this.addMode("V", "View hint source in external editor",  (elem, loc) => buffer.viewSource(loc, true));
         this.addMode("y", "Yank hint location",                   (elem, loc) => editor.setRegister(null, cleanLoc(loc), true));
         this.addMode("Y", "Yank hint description",                elem => editor.setRegister(null, elem.textContent || "", true));
+        this.addMode("X", "Download YouTube Videos",              loc => io.system('youtube-dl \"' + loc + '\"'));
         this.addMode("A", "Yank hint anchor url",                 elem => {
             let uri = elem.ownerDocument.documentURIObject.clone();
             uri.ref = elem.id || elem.name;
